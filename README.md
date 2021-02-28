@@ -9,7 +9,13 @@ npx prisma generate
 ```
 
 - 定义DefinitionSchema
+ - const {Entity, EntityQuery, EntityMutation}  = createDefinitionSchema(Entity: string, properties:PropertyDef[])
+ - export {Entity, EntityQuery, EntityMutation} 
+ - 引入文件到index.ts
+ - 实现基础的增删改成
+  
 ```typescipt
+
 export interface PropertyDef {
     /**
      * 字段类型
