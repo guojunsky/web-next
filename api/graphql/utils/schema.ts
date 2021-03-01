@@ -121,7 +121,7 @@ export function createDefinitionSchemaQuery(definitionName: string, properties: 
                     }
                     //@ts-ignore
                     return ctx.db[definitionName.toLocaleLowerCase()].findMany({
-                        where: {...args, delete: false}
+                        where: {...args, deleted: false}
                     });
                 }
             })

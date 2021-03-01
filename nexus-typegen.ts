@@ -37,20 +37,27 @@ export interface NexusGenObjects {
   }
   Query: {};
   Subject: { // root type
-    deleted?: boolean | null; // Boolean
-    id?: number | null; // Int
+    createUserName: string; // String!
+    createdAt: string; // String!
+    deleted: boolean; // Boolean!
+    deletedAt?: string | null; // String
+    id: number; // Int!
     itemOrder?: number | null; // Int
     level?: number | null; // Int
     levelName?: string | null; // String
-    name?: string | null; // String
+    name: string; // String!
+    updatedAt: string; // String!
   }
   User: { // root type
-    createTime: number; // Int!
+    createUserName: string; // String!
+    createdAt: string; // String!
     deleted: boolean; // Boolean!
+    deletedAt?: string | null; // String
     id: number; // Int!
     mobile: string; // String!
     name: string; // String!
     sex: number; // Int!
+    updatedAt: string; // String!
   }
 }
 
@@ -69,8 +76,10 @@ export interface NexusGenFieldTypes {
     createDraft: NexusGenRootTypes['Post'] | null; // Post
     createSubject: NexusGenRootTypes['Subject'] | null; // Subject
     createUser: NexusGenRootTypes['User'] | null; // User
+    deleteSubject: NexusGenRootTypes['Subject'] | null; // Subject
     deleteUser: NexusGenRootTypes['User'] | null; // User
     publish: NexusGenRootTypes['Post'] | null; // Post
+    updateSubject: NexusGenRootTypes['Subject'] | null; // Subject
     updateUser: NexusGenRootTypes['User'] | null; // User
   }
   Post: { // field return type
@@ -86,20 +95,27 @@ export interface NexusGenFieldTypes {
     posts: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
   }
   Subject: { // field return type
-    deleted: boolean | null; // Boolean
-    id: number | null; // Int
+    createUserName: string; // String!
+    createdAt: string; // String!
+    deleted: boolean; // Boolean!
+    deletedAt: string | null; // String
+    id: number; // Int!
     itemOrder: number | null; // Int
     level: number | null; // Int
     levelName: string | null; // String
-    name: string | null; // String
+    name: string; // String!
+    updatedAt: string; // String!
   }
   User: { // field return type
-    createTime: number; // Int!
+    createUserName: string; // String!
+    createdAt: string; // String!
     deleted: boolean; // Boolean!
+    deletedAt: string | null; // String
     id: number; // Int!
     mobile: string; // String!
     name: string; // String!
     sex: number; // Int!
+    updatedAt: string; // String!
   }
 }
 
@@ -108,8 +124,10 @@ export interface NexusGenFieldTypeNames {
     createDraft: 'Post'
     createSubject: 'Subject'
     createUser: 'User'
+    deleteSubject: 'Subject'
     deleteUser: 'User'
     publish: 'Post'
+    updateSubject: 'Subject'
     updateUser: 'User'
   }
   Post: { // field return type name
@@ -125,20 +143,27 @@ export interface NexusGenFieldTypeNames {
     posts: 'Post'
   }
   Subject: { // field return type name
+    createUserName: 'String'
+    createdAt: 'String'
     deleted: 'Boolean'
+    deletedAt: 'String'
     id: 'Int'
     itemOrder: 'Int'
     level: 'Int'
     levelName: 'String'
     name: 'String'
+    updatedAt: 'String'
   }
   User: { // field return type name
-    createTime: 'Int'
+    createUserName: 'String'
+    createdAt: 'String'
     deleted: 'Boolean'
+    deletedAt: 'String'
     id: 'Int'
     mobile: 'String'
     name: 'String'
     sex: 'Int'
+    updatedAt: 'String'
   }
 }
 
@@ -152,18 +177,28 @@ export interface NexusGenArgTypes {
       itemOrder: number; // Int!
       level: number; // Int!
       levelName: string; // String!
-      name: string; // String!
+      name?: string | null; // String
     }
     createUser: { // args
       mobile?: string | null; // String
       name?: string | null; // String
       sex?: number | null; // Int
     }
+    deleteSubject: { // args
+      id: number; // Int!
+    }
     deleteUser: { // args
       id: number; // Int!
     }
     publish: { // args
       draftId: number; // Int!
+    }
+    updateSubject: { // args
+      id: number; // Int!
+      itemOrder: number; // Int!
+      level: number; // Int!
+      levelName: string; // String!
+      name?: string | null; // String
     }
     updateUser: { // args
       id: number; // Int!
@@ -173,8 +208,27 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
-    User: { // args
+    Subject: { // args
+      createUserName?: string | null; // String
+      createdAt?: string | null; // String
       criteriaStr?: string | null; // String
+      deleted?: boolean | null; // Boolean
+      deletedAt?: string | null; // String
+      id?: number | null; // Int
+      itemOrder?: number | null; // Int
+      level?: number | null; // Int
+      levelName?: string | null; // String
+      name?: string | null; // String
+      updatedAt?: string | null; // String
+    }
+    User: { // args
+      createUserName?: string | null; // String
+      createdAt?: string | null; // String
+      criteriaStr?: string | null; // String
+      deleted?: boolean | null; // Boolean
+      deletedAt?: string | null; // String
+      id?: number | null; // Int
+      updatedAt?: string | null; // String
     }
   }
 }

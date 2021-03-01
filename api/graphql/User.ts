@@ -1,33 +1,18 @@
-import { createDefinitionSchema } from './utils/object';
+import { SystemDefinitionProps } from './utils/definition';
+import { createDefinitionSchema } from './utils/schema';
 
-const { User, UserQuery, UserMutation } = createDefinitionSchema('User', [{
-    name: 'id',
-    isNull: false,
-    list: false,
-    asCondition: false,
-    type: 'Int',
-    system: true,
-
-}, {
-    name: 'name',
-    type: 'String'
-}, {
-    name: 'sex',
-    type: 'Int',
-}, {
-    name: 'mobile',
-    type: 'String',
-}, {
-    type: 'Int',
-    name: 'createTime',
-    system: true,
-    systemCreator: () => Date.now()
-}, {
-    type: 'Boolean',
-    name: 'deleted',
-    system: true,
-    systemCreator: () => false
-
-}])
+const { User, UserQuery, UserMutation } = createDefinitionSchema('User', [
+    ...SystemDefinitionProps,
+    {
+        name: 'name',
+        type: 'String'
+    }, {
+        name: 'sex',
+        type: 'Int',
+    }, {
+        name: 'mobile',
+        type: 'String',
+    }
+])
 
 export { User, UserQuery, UserMutation }

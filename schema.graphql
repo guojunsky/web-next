@@ -4,10 +4,12 @@
 
 type Mutation {
   createDraft(body: String!, title: String!): Post
-  createSubject(itemOrder: Int!, level: Int!, levelName: String!, name: String!): Subject
+  createSubject(itemOrder: Int!, level: Int!, levelName: String!, name: String): Subject
   createUser(mobile: String, name: String, sex: Int): User
+  deleteSubject(id: Int!): Subject
   deleteUser(id: Int!): User
   publish(draftId: Int!): Post
+  updateSubject(id: Int!, itemOrder: Int!, level: Int!, levelName: String!, name: String): Subject
   updateUser(id: Int!, mobile: String, name: String, sex: Int): User
 }
 
@@ -19,26 +21,33 @@ type Post {
 }
 
 type Query {
-  Subject: [Subject]
-  User(criteriaStr: String): [User]
+  Subject(createUserName: String, createdAt: String, criteriaStr: String, deleted: Boolean, deletedAt: String, id: Int, itemOrder: Int, level: Int, levelName: String, name: String, updatedAt: String): [Subject]
+  User(createUserName: String, createdAt: String, criteriaStr: String, deleted: Boolean, deletedAt: String, id: Int, updatedAt: String): [User]
   drafts: [Post]
   posts: [Post]
 }
 
 type Subject {
-  deleted: Boolean
-  id: Int
+  createUserName: String!
+  createdAt: String!
+  deleted: Boolean!
+  deletedAt: String
+  id: Int!
   itemOrder: Int
   level: Int
   levelName: String
-  name: String
+  name: String!
+  updatedAt: String!
 }
 
 type User {
-  createTime: Int!
+  createUserName: String!
+  createdAt: String!
   deleted: Boolean!
+  deletedAt: String
   id: Int!
   mobile: String!
   name: String!
   sex: Int!
+  updatedAt: String!
 }
