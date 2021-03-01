@@ -1,5 +1,5 @@
 import { SystemDefinitionProps } from './utils/definition';
-import { createSchema, createDefinitionSchema } from './utils/schema';
+import { createDefinitionSchema } from './utils/schema';
 /**
  * 科目
  */
