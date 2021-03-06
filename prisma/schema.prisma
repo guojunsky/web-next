@@ -18,26 +18,36 @@ model Post {
 }
 
 model Subject {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique @db.VarChar(30)
-  levelName String?
-  level     Int?
-  itemOrder Int?
-  deleted   Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  deletedAt DateTime?
+  id             Int       @id @default(autoincrement())
+  name           String    @unique @db.VarChar(30)
+  levelName      String?
+  level          Int?
+  itemOrder      Int?
+  deleted        Boolean   @default(false)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  deletedAt      DateTime?
   createUserName String?
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  sex       Int      @default(0)
-  mobile    String   @unique
-  deleted   Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  deletedAt DateTime?
+  id             Int       @id @default(autoincrement())
+  uuid           String    @unique @db.VarChar(64)
+  name           String    @unique
+  password       String    @db.VarChar(50)
+  realName       String    @db.VarChar(50)
+  age            Int
+  birthDay       DateTime?
+  sex            Int       @default(0)
+  mobile         String    @unique
+  deleted        Boolean   @default(false)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  deletedAt      DateTime?
   createUserName String?
+  userLevel      Int?      @default(0)
+  role           Int?
+  status         Int?
+  wxOpenId       String?   @db.VarChar(100)
+  uninqueId      String?   @db.VarChar(100)
 }

@@ -49,6 +49,8 @@ export interface NexusGenObjects {
     updatedAt: string; // String!
   }
   User: { // root type
+    age?: number | null; // Int
+    birthDay?: string | null; // String
     createUserName: string; // String!
     createdAt: string; // String!
     deleted: boolean; // Boolean!
@@ -56,8 +58,16 @@ export interface NexusGenObjects {
     id: number; // Int!
     mobile: string; // String!
     name: string; // String!
+    password: string; // String!
+    realName: string; // String!
+    role?: number | null; // Int
     sex: number; // Int!
+    status?: number | null; // Int
+    uninqueId?: string | null; // String
     updatedAt: string; // String!
+    userLevel?: number | null; // Int
+    uuid: string; // String!
+    wxOpenId?: string | null; // String
   }
 }
 
@@ -107,6 +117,8 @@ export interface NexusGenFieldTypes {
     updatedAt: string; // String!
   }
   User: { // field return type
+    age: number | null; // Int
+    birthDay: string | null; // String
     createUserName: string; // String!
     createdAt: string; // String!
     deleted: boolean; // Boolean!
@@ -114,8 +126,16 @@ export interface NexusGenFieldTypes {
     id: number; // Int!
     mobile: string; // String!
     name: string; // String!
+    password: string; // String!
+    realName: string; // String!
+    role: number | null; // Int
     sex: number; // Int!
+    status: number | null; // Int
+    uninqueId: string | null; // String
     updatedAt: string; // String!
+    userLevel: number | null; // Int
+    uuid: string; // String!
+    wxOpenId: string | null; // String
   }
 }
 
@@ -155,6 +175,8 @@ export interface NexusGenFieldTypeNames {
     updatedAt: 'String'
   }
   User: { // field return type name
+    age: 'Int'
+    birthDay: 'String'
     createUserName: 'String'
     createdAt: 'String'
     deleted: 'Boolean'
@@ -162,8 +184,16 @@ export interface NexusGenFieldTypeNames {
     id: 'Int'
     mobile: 'String'
     name: 'String'
+    password: 'String'
+    realName: 'String'
+    role: 'Int'
     sex: 'Int'
+    status: 'Int'
+    uninqueId: 'String'
     updatedAt: 'String'
+    userLevel: 'Int'
+    uuid: 'String'
+    wxOpenId: 'String'
   }
 }
 
@@ -180,9 +210,18 @@ export interface NexusGenArgTypes {
       name?: string | null; // String
     }
     createUser: { // args
+      age: number; // Int!
+      birthDay: string; // String!
       mobile?: string | null; // String
       name?: string | null; // String
+      password?: string | null; // String
+      realName?: string | null; // String
+      role: number; // Int!
       sex?: number | null; // Int
+      status: number; // Int!
+      uninqueId: string; // String!
+      userLevel: number; // Int!
+      wxOpenId: string; // String!
     }
     deleteSubject: { // args
       id: number; // Int!
@@ -201,10 +240,19 @@ export interface NexusGenArgTypes {
       name?: string | null; // String
     }
     updateUser: { // args
+      age: number; // Int!
+      birthDay: string; // String!
       id: number; // Int!
       mobile?: string | null; // String
       name?: string | null; // String
+      password?: string | null; // String
+      realName?: string | null; // String
+      role: number; // Int!
       sex?: number | null; // Int
+      status: number; // Int!
+      uninqueId: string; // String!
+      userLevel: number; // Int!
+      wxOpenId: string; // String!
     }
   }
   Query: {
@@ -222,13 +270,21 @@ export interface NexusGenArgTypes {
       updatedAt?: string | null; // String
     }
     User: { // args
+      age?: number | null; // Int
+      birthDay?: string | null; // String
       createUserName?: string | null; // String
       createdAt?: string | null; // String
       criteriaStr?: string | null; // String
       deleted?: boolean | null; // Boolean
       deletedAt?: string | null; // String
       id?: number | null; // Int
+      realName?: string | null; // String
+      role?: number | null; // Int
+      status?: number | null; // Int
+      uninqueId?: string | null; // String
       updatedAt?: string | null; // String
+      userLevel?: number | null; // Int
+      wxOpenId?: string | null; // String
     }
   }
 }

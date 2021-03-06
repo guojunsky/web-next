@@ -5,12 +5,12 @@
 type Mutation {
   createDraft(body: String!, title: String!): Post
   createSubject(itemOrder: Int!, level: Int!, levelName: String!, name: String): Subject
-  createUser(mobile: String, name: String, sex: Int): User
+  createUser(age: Int!, birthDay: String!, mobile: String, name: String, password: String, realName: String, role: Int!, sex: Int, status: Int!, uninqueId: String!, userLevel: Int!, wxOpenId: String!): User
   deleteSubject(id: Int!): Subject
   deleteUser(id: Int!): User
   publish(draftId: Int!): Post
   updateSubject(id: Int!, itemOrder: Int!, level: Int!, levelName: String!, name: String): Subject
-  updateUser(id: Int!, mobile: String, name: String, sex: Int): User
+  updateUser(age: Int!, birthDay: String!, id: Int!, mobile: String, name: String, password: String, realName: String, role: Int!, sex: Int, status: Int!, uninqueId: String!, userLevel: Int!, wxOpenId: String!): User
 }
 
 type Post {
@@ -22,7 +22,7 @@ type Post {
 
 type Query {
   Subject(createUserName: String, createdAt: String, criteriaStr: String, deleted: Boolean, deletedAt: String, id: Int, itemOrder: Int, level: Int, levelName: String, name: String, updatedAt: String): [Subject]
-  User(createUserName: String, createdAt: String, criteriaStr: String, deleted: Boolean, deletedAt: String, id: Int, updatedAt: String): [User]
+  User(age: Int, birthDay: String, createUserName: String, createdAt: String, criteriaStr: String, deleted: Boolean, deletedAt: String, id: Int, realName: String, role: Int, status: Int, uninqueId: String, updatedAt: String, userLevel: Int, wxOpenId: String): [User]
   drafts: [Post]
   posts: [Post]
 }
@@ -41,6 +41,8 @@ type Subject {
 }
 
 type User {
+  age: Int
+  birthDay: String
   createUserName: String!
   createdAt: String!
   deleted: Boolean!
@@ -48,6 +50,14 @@ type User {
   id: Int!
   mobile: String!
   name: String!
+  password: String!
+  realName: String!
+  role: Int
   sex: Int!
+  status: Int
+  uninqueId: String
   updatedAt: String!
+  userLevel: Int
+  uuid: String!
+  wxOpenId: String
 }
