@@ -121,7 +121,7 @@ export function createDefinitionSchemaQuery(definitionName: string, properties: 
                     }
                     //@ts-ignore
                     return ctx.db[definitionName.toLocaleLowerCase()].findMany({
-                        where: {...args, deleted: false}
+                        where: { ...args, deleted: false }
                     });
                 }
             })
@@ -158,6 +158,8 @@ export function createDefinitionSchemaMutation(definitionName: string, propertie
                         case "Boolean":
                             creator.push(booleanArg);
                             break;
+                        default:
+                            return p;
                     }
 
                     const args = creator.reduceRight((p, n) => {

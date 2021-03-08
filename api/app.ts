@@ -10,7 +10,8 @@ import compression from "compression"
 import { errorHandler } from './middlewares/errorHandler';
 import { ApiError } from "./middlewares/apiHandler";
 import httpStatus from "http-status";
- 
+import router from "./controllers/index"
+import config from "../config/config";
 
 
 
@@ -37,12 +38,14 @@ app.use(compression());
 app.use(cors());
 app.options('*', cors());
 
+app.use(router)
+
 app.use((req, res, next) => {
   next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
 });
 
 app.use(errorHandler)
 
-app.listen({ port: 4000}, ()=>{
+app.listen({ port: config.port }, () => {
   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
-}) 
+})

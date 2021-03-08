@@ -36,6 +36,21 @@ export interface NexusGenObjects {
     title?: string | null; // String
   }
   Query: {};
+  Question: { // root type
+    correct: string; // String!
+    createUserName: string; // String!
+    createdAt: string; // String!
+    deleted: boolean; // Boolean!
+    deletedAt?: string | null; // String
+    difficult: number; // Int!
+    gradeLevel: number; // Int!
+    id: number; // Int!
+    questionType: number; // Int!
+    score: number; // Int!
+    subject: NexusGenRootTypes['Subject']; // Subject!
+    subjectId: number; // Int!
+    updatedAt: string; // String!
+  }
   Subject: { // root type
     createUserName: string; // String!
     createdAt: string; // String!
@@ -84,11 +99,14 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 export interface NexusGenFieldTypes {
   Mutation: { // field return type
     createDraft: NexusGenRootTypes['Post'] | null; // Post
+    createQuestion: NexusGenRootTypes['Question'] | null; // Question
     createSubject: NexusGenRootTypes['Subject'] | null; // Subject
     createUser: NexusGenRootTypes['User'] | null; // User
+    deleteQuestion: NexusGenRootTypes['Question'] | null; // Question
     deleteSubject: NexusGenRootTypes['Subject'] | null; // Subject
     deleteUser: NexusGenRootTypes['User'] | null; // User
     publish: NexusGenRootTypes['Post'] | null; // Post
+    updateQuestion: NexusGenRootTypes['Question'] | null; // Question
     updateSubject: NexusGenRootTypes['Subject'] | null; // Subject
     updateUser: NexusGenRootTypes['User'] | null; // User
   }
@@ -99,10 +117,26 @@ export interface NexusGenFieldTypes {
     title: string | null; // String
   }
   Query: { // field return type
+    Question: Array<NexusGenRootTypes['Question'] | null> | null; // [Question]
     Subject: Array<NexusGenRootTypes['Subject'] | null> | null; // [Subject]
     User: Array<NexusGenRootTypes['User'] | null> | null; // [User]
     drafts: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
     posts: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
+  }
+  Question: { // field return type
+    correct: string; // String!
+    createUserName: string; // String!
+    createdAt: string; // String!
+    deleted: boolean; // Boolean!
+    deletedAt: string | null; // String
+    difficult: number; // Int!
+    gradeLevel: number; // Int!
+    id: number; // Int!
+    questionType: number; // Int!
+    score: number; // Int!
+    subject: NexusGenRootTypes['Subject']; // Subject!
+    subjectId: number; // Int!
+    updatedAt: string; // String!
   }
   Subject: { // field return type
     createUserName: string; // String!
@@ -142,11 +176,14 @@ export interface NexusGenFieldTypes {
 export interface NexusGenFieldTypeNames {
   Mutation: { // field return type name
     createDraft: 'Post'
+    createQuestion: 'Question'
     createSubject: 'Subject'
     createUser: 'User'
+    deleteQuestion: 'Question'
     deleteSubject: 'Subject'
     deleteUser: 'User'
     publish: 'Post'
+    updateQuestion: 'Question'
     updateSubject: 'Subject'
     updateUser: 'User'
   }
@@ -157,10 +194,26 @@ export interface NexusGenFieldTypeNames {
     title: 'String'
   }
   Query: { // field return type name
+    Question: 'Question'
     Subject: 'Subject'
     User: 'User'
     drafts: 'Post'
     posts: 'Post'
+  }
+  Question: { // field return type name
+    correct: 'String'
+    createUserName: 'String'
+    createdAt: 'String'
+    deleted: 'Boolean'
+    deletedAt: 'String'
+    difficult: 'Int'
+    gradeLevel: 'Int'
+    id: 'Int'
+    questionType: 'Int'
+    score: 'Int'
+    subject: 'Subject'
+    subjectId: 'Int'
+    updatedAt: 'String'
   }
   Subject: { // field return type name
     createUserName: 'String'
@@ -203,6 +256,14 @@ export interface NexusGenArgTypes {
       body: string; // String!
       title: string; // String!
     }
+    createQuestion: { // args
+      correct?: string | null; // String
+      difficult?: number | null; // Int
+      gradeLevel?: number | null; // Int
+      questionType?: number | null; // Int
+      score?: number | null; // Int
+      subjectId?: number | null; // Int
+    }
     createSubject: { // args
       itemOrder: number; // Int!
       level: number; // Int!
@@ -223,6 +284,9 @@ export interface NexusGenArgTypes {
       userLevel: number; // Int!
       wxOpenId: string; // String!
     }
+    deleteQuestion: { // args
+      id: number; // Int!
+    }
     deleteSubject: { // args
       id: number; // Int!
     }
@@ -231,6 +295,15 @@ export interface NexusGenArgTypes {
     }
     publish: { // args
       draftId: number; // Int!
+    }
+    updateQuestion: { // args
+      correct?: string | null; // String
+      difficult?: number | null; // Int
+      gradeLevel?: number | null; // Int
+      id: number; // Int!
+      questionType?: number | null; // Int
+      score?: number | null; // Int
+      subjectId?: number | null; // Int
     }
     updateSubject: { // args
       id: number; // Int!
@@ -256,6 +329,21 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
+    Question: { // args
+      correct?: string | null; // String
+      createUserName?: string | null; // String
+      createdAt?: string | null; // String
+      criteriaStr?: string | null; // String
+      deleted?: boolean | null; // Boolean
+      deletedAt?: string | null; // String
+      difficult?: number | null; // Int
+      gradeLevel?: number | null; // Int
+      id?: number | null; // Int
+      questionType?: number | null; // Int
+      score?: number | null; // Int
+      subjectId?: number | null; // Int
+      updatedAt?: string | null; // String
+    }
     Subject: { // args
       createUserName?: string | null; // String
       createdAt?: string | null; // String
